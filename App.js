@@ -44,11 +44,11 @@ function HomeScreen({ navigation }) {
         />
       <Button
         title="Go to SignUp"
-        onPress={() => navigation.navigate('Sign')}
+        onPress={() => navigation.navigate('Signup')}
       />
       <Button
         title="Go to Home Page"
-        onPress={() => navigation.navigate('HomeP')}
+        onPress={() => navigation.navigate('Post')}
       />
     </View>
   );
@@ -101,8 +101,8 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Login" component={VsScreen} />
-        <Stack.Screen name="Sign" component={SnScreen} />
-        <Stack.Screen name="HomeP" component={HmScreen} />
+        <Stack.Screen name="Signup" component={SnScreen} />
+        <Stack.Screen name="Post" component={HmScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
