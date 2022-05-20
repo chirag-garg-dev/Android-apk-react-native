@@ -1,6 +1,6 @@
 import React, {useState, createRef} from 'react';
 import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
-export const useLogin = () => {
+export const useLogin = ( ) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,6 +50,7 @@ export const useLogin = () => {
         if (!responseJson.token == false) {
           savedData(responseJson["token"]);
           getData();
+
         } else {
           alert("Please check your email id or password");
           console.log('Please check your email id or password');

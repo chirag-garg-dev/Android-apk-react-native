@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect } from 'react';
 // import * as ImagePicker from 'expo-image-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import * as notesActions from '../actions/notesActions';
 
 import {
   ScrollView,
@@ -9,7 +10,6 @@ import {
   TextInput,
   Button,
   Image,
-  
   Platform,
   TouchableOpacity,
 } from 'react-native';
@@ -28,6 +28,7 @@ function UpdateNote({ note, updateNote }){
 			'description': description,
       'avatar': image
 		}
+    console.log("11111111111111111111",note,id)
 		updateNote(note,id)
 	}
 

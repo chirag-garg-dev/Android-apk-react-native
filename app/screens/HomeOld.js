@@ -1,28 +1,24 @@
+import React, {Component,useEffect, useState, useDispatch} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Home from '../screens/home';
+// import Home from '../screens/home';
 import * as notesActions from '../actions/notesActions';
+import fetchNotes from './../actions/notesActions';
+import {
+  ScrollView, FlatList, SafeAreaView, StatusBar,
+  View,
+  Text,
+  TextInput,
+  Button,
+  Image,
+} from 'react-native';
+import styles from './style';
+import NotesList from './NotesList';
+import UpdateNote from './UpdateNote';
+import GetLocation from 'react-native-get-location';
+ 
 
-const actions = {
-  ...notesActions,
-};
-
-const mapStateToProps = state => ({
-  notes: state.notes,
-});
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Home);
-
-
-
- class Home extends Component {
+  class HomeOld extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -132,3 +128,23 @@ export default connect(
     );
   }
 }
+
+
+const actions = {
+  ...notesActions,
+};
+
+const mapStateToProps = state => ({
+  notes: state.notes,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
+
+
