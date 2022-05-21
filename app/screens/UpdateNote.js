@@ -1,6 +1,8 @@
 import React, {Component, useState, useEffect } from 'react';
 // import * as ImagePicker from 'expo-image-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {connect, useDispatch, useSelector} from 'react-redux';
+  
 import * as notesActions from '../actions/notesActions';
 
 import {
@@ -14,7 +16,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
-function UpdateNote({ note, updateNote }){
+import {postData} from './Hooks';
+
+function UpdateNote({ note, updateNote, navigation, deleteNote }){
+
+  const { isNew, setIsNew } = postData();
+
+
+  const dispatch= useDispatch()
 
 	const [name, setName] = useState(note.name);
 	const [title, setTitle] = useState(note.title);
@@ -28,19 +37,17 @@ function UpdateNote({ note, updateNote }){
 			'description': description,
       'avatar': image
 		}
-    console.log("11111111111111111111",note,id)
-		updateNote(note,id)
-	}
+
+    dispatch(notesActions.updateNote(note,id))
+	  setIsNew({isNew: false})
+  }
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
      launchImageLibrary({ noData: true }, (response) => {
       // console.log(response);
-    
       if (response) {
         setImage(response);
       }
-    
     });
 
 // let result = await ImagePicker.launchImageLibraryAsync({

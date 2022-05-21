@@ -9,6 +9,7 @@ import {
   TextInput,
   Button,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './style';
 import NotesList from './NotesList';
@@ -25,7 +26,7 @@ export default function  Home() {
     if (status === 'failure') {
       return <Text>{'Error'}</Text>;
     } else if (status == 'loading') {
-      return <Text>{'Loading'}</Text>;
+      return <ActivityIndicator size="large" />;
     }
     return (
     <SafeAreaView style={styles.container}>
@@ -41,7 +42,7 @@ export default function  Home() {
   const renderNote = ({ item }) => {
     return( 
       <>
-      <NotesList note={item} editNote={_editNote} /> 
+      <NotesList note={item} editNote={_editNote} deleteNote={_deleteNote} /> 
       </>
     );
   }
@@ -52,12 +53,17 @@ export default function  Home() {
   };
 
   const _updateNote = (note,id) =>  {
-    notesActions.updateNote(note,id)     
+    notesActions.updateNote(note,id)
+    setIsNew({isNew: false});    
   }
+
+  const _deleteNote = (id) => {
+    dispatch(notesActions.deleteNote(id));
+  } 
 
 return (
  <View style={styles.container}>
-    {isNew ? <UpdateNote note={note} updateNote={_updateNote()} />  : renderNotes() }
+    {isNew ? <UpdateNote note={note}   />  : renderNotes() }
     {isNew ?   <Button title="Back"  /> :<Button title="Create"/> }
   </View>
   )

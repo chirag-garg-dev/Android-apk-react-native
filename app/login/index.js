@@ -15,7 +15,8 @@ import LoginPart from './Hooks';
 import styles from './style';
 import { useLogin } from './Hooks';
 
-export function LoginView() {
+// export function LoginView() {
+const LoginView = ({ navigation }) => {
 
   const {  setEmail , setPassword , handleSubmitPress } = useLogin();
  
@@ -52,6 +53,7 @@ export function LoginView() {
   );
 };
 
+export default LoginView;
  
 // import React, {useState, createRef} from 'react';
 // import {AsyncStorage} from 'react-native';

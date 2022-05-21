@@ -18,6 +18,124 @@
 
 // export default App;
 
+
+
+
+
+
+
+
+
+// import * as React from 'react';
+// import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
+
+// import { Button, View, Text } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+// import LoginView from './app/login';
+// import thunk from 'redux-thunk';
+// import {Provider} from 'react-redux';
+// import {applyMiddleware, combineReducers, createStore} from 'redux';
+// import reducers from './app/reducers';
+// import Home from './app/screens/Home';
+
+// const rootReducer = combineReducers({...reducers});
+// const store = createStore(rootReducer, applyMiddleware(thunk));
+// import {SignUp} from './app/signup';
+
+
+
+
+ 
+// function HomeScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor: "#e3f1efa1" }}>
+//       <Text>Home Screen</Text>
+//       <Button
+//         title="Go to Login"
+//         onPress={() => navigation.navigate('Login')}
+//         />
+//       <Button
+//         title="Go to SignUp"
+//         onPress={() => navigation.navigate('Signup')}
+//       />
+//       <Button
+//         title="Go to Home Page"
+//         onPress={() => navigation.navigate('Post')}
+//       />
+//     </View>
+//   );
+// }
+
+// function DetailsScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Text>Chirag Screen</Text>
+//       <Button
+//         title="Go to Chirag details "
+//         onPress={() => navigation.navigate('Home')}
+//       />
+//     </View>
+//   );
+// }
+ 
+// function VsScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center' }}>
+//       <LoginView />
+//     </View>
+//   );
+// }
+
+// function SnScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center'}}>
+//      <SignUp />
+//     </View>
+//     );
+// }
+
+// function HmScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center'}}>
+//       <Provider store={store}>
+//       <Home />
+//     </Provider>
+//     </View>
+//     );
+// }
+
+// const Stack = createNativeStackNavigator();
+
+// function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Login">
+//         <Stack.Screen name="Home" component={HomeScreen} />
+//         <Stack.Screen name="Login" component={LoginView} />
+        
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import * as React from 'react';
 // import { Button, View, Text } from 'react-native';
 // import { NavigationContainer } from '@react-navigation/native';
@@ -27,7 +145,8 @@
 // import {Provider} from 'react-redux';
 // import {applyMiddleware, combineReducers, createStore} from 'redux';
 // import reducers from './app/reducers';
-// import Home from './app/containers/homeContainer';
+// import Home from './app/screens/Home';
+
 
 // const rootReducer = combineReducers({...reducers});
 // const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -548,24 +667,23 @@
 
 import * as React from 'react';
 import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
-
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {LoginView} from './app/login';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import reducers from './app/reducers';
 import Home from './app/screens/Home';
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import LoginView from './app/login';
+import SignUp from './app/signup';
 
 const rootReducer = combineReducers({...reducers});
 const store = createStore(rootReducer, applyMiddleware(thunk));
-import {SignUp} from './app/signup';
-// import {SplashScreen} from './app/csplash/ccc';
 
-const Drawer = createDrawerNavigator();
+  const Drawer = createDrawerNavigator();
   const getData = async () => {
     const save =  await AsyncStorage.getItem("token");
      console.log(save);
@@ -577,86 +695,49 @@ const Drawer = createDrawerNavigator();
     console.log("getData", getData());
   }
  
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor: "#e3f1efa1" }}>
-      <Text>Home Screen</Text>
-      { getData() ?
-        (<>
-        <Button
-          title="Go to Home Page"
-          onPress={() => navigation.navigate('Post')}
-        />
-        <Button
-          title="Logout"
-          onPress={() => logoutData('')}
-        />
-      </>) :
-      (<>
-        <Button
-          title="Go to Login"
-          onPress={() => navigation.navigate('Login')}
-          />
-        <Button
-          title="Go to SignUp"
-          onPress={() => navigation.navigate('Signup')}
-        />
-      </>)
-    }
-    </View>
-  );
-}
+// function HomeScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor: "#e3f1efa1" }}>
+//       <Text>Home Screen</Text>
+//       { getData() ?
+//         (<>
+//         <Button
+//           title="Go to Home Page"
+//           onPress={() => navigation.navigate('Post')}
+//         />
+//         <Button
+//           title="Logout"
+//           onPress={() => logoutData('')}
+//         />
+//       </>) :
+//       (<>
+//         <Button
+//           title="Go to Login"
+//           onPress={() => navigation.navigate('Login')}
+//           />
+//         <Button
+//           title="Go to SignUp"
+//           onPress={() => navigation.navigate('Signup')}
+//         />
+//       </>)
+//     }
+//     </View>
+//   );
+// }
 
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Chirag Screen</Text>
-      <Button
-        title="Go to Chirag details "
-        onPress={() => navigation.navigate('Home')}
-      />
-    </View>
-  );
-}
- 
-function VsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-      <LoginView />
-    </View>
-  );
-}
-
-function SnScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center'}}>
-     <SignUp />
-    </View>
-    );
-}
-
-function HmScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center'}}>
-      <Provider store={store}>
-      <Home />
-    </Provider>
-    </View>
-    );
-}
 
 function App() {
   return (
+     <Provider store={store}>
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Details" component={DetailsScreen} />
-        <Drawer.Screen name="Login" component={VsScreen} />
-        <Drawer.Screen name="Signup" component={SnScreen} />
-        <Drawer.Screen name="Post" component={HmScreen} />
-
+        <Drawer.Screen name="Home" component={WelcomeScreen} />
+        <Drawer.Screen name="Login" component={LoginView} />
+        <Drawer.Screen name="Signup" component={SignUp} />
+        <Drawer.Screen name="Post" component={Home} />
       </Drawer.Navigator>
     </NavigationContainer>
+     </Provider>
   );
 }
 export default App;

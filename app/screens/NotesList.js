@@ -1,4 +1,5 @@
 import React , {Component, useState } from 'react';
+import {useDispatch} from 'react-redux';
 import {
   ScrollView,
   View,
@@ -10,8 +11,15 @@ import {
 import styles from './style';
 import deleteNote from './../actions/notesActions';
 import UpdateNote from './UpdateNote';
- 
-function NotesList  ({note, deleteNote, editNote }) {
+import * as notesActions from '../actions/notesActions';
+
+function NotesList  ({note,  editNote }) {
+
+  const dispatch= useDispatch()
+
+  const deleteNote = (id) => {
+    dispatch(notesActions.deleteNote(id));
+  }
 
 	return( 
   	<View style={styles.row} >
@@ -21,16 +29,13 @@ function NotesList  ({note, deleteNote, editNote }) {
         <Text style={styles.author}>{note.description}</Text>
         
         {note.avatar && <Image source={{ uri: note.avatar }} style={{ width: 400, height: 400 }} />}
-        
         <Button title="Delete" onPress={() => {
                 deleteNote(note.id)
                 }} />
          <Button title= "Edit" onPress={() => {
          		editNote(note)
          }}/>
-
       </View>
-
     </View>
 	);
 }; 

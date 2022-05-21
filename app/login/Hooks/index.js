@@ -1,6 +1,7 @@
 import React, {useState, createRef} from 'react';
 import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
-export const useLogin = ( ) => {
+
+export const useLogin = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -62,6 +63,6 @@ export const useLogin = ( ) => {
       });
   };
   return {
-    email, setEmail , password , setPassword , handleSubmitPress
+    email, setEmail , password , setPassword , handleSubmitPress 
   }; 
 };

@@ -10,8 +10,7 @@ import {
 } from "react-native";
 import styles from './style';
 
-export function SignUp() {
-
+function SignUp() {
     const {email, setEmail, setPassword , password, handleSubmitButton } = useSignup();
 
     return (
@@ -41,3 +40,4 @@ export function SignUp() {
   }
 
  
+export default SignUp;
