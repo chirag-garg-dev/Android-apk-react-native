@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AsyncStorage } from 'react-native';
+import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
 
 export const useSignup = () => {
 
@@ -58,6 +58,7 @@ export const useSignup = () => {
         
         if (!responseJson == false) {
           savedData(responseJson["token"]);
+          
           getData();
           alert("Registration Successful"); 
           console.log('Registration Successful. Please Login to proceed');

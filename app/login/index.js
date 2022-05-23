@@ -1,16 +1,8 @@
-import React, {useState, createRef} from 'react';
-import { AsyncStorage } from 'react-native'; 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  Alert,
-  TouchableOpacity,
-
-} from "react-native";
+import React, {useState, createRef, useEffect} from 'react';
+import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
+import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, 
+  Alert, Image, Platform, TouchableWithoutFeedback, 
+  TouchableOpacity, Button, Keyboard  } from 'react-native';
 import LoginPart from './Hooks';
 import styles from './style';
 import { useLogin } from './Hooks';
@@ -19,8 +11,22 @@ import { useLogin } from './Hooks';
 const LoginView = ({ navigation }) => {
 
   const {  setEmail , setPassword , handleSubmitPress } = useLogin();
- 
-  return (    
+
+  const getData = async () => {
+    const save =  await AsyncStorage.getItem("token");
+      console.log(save)
+      save && navigation.navigate('DrawerStack');   
+    } 
+      useEffect(() => {
+        getData()  
+      },[]);
+      
+  return ( 
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <View style={styles.inputView}>
          <TextInput
@@ -50,10 +56,17 @@ const LoginView = ({ navigation }) => {
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
     </View>
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
 export default LoginView;
+
+
+
+
+
  
 // import React, {useState, createRef} from 'react';
 // import {AsyncStorage} from 'react-native';
