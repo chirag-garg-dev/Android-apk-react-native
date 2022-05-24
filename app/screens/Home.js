@@ -43,6 +43,7 @@ export default function  Home({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Button title="Create Post" onPress={() =>  navigation.navigate("Create")}/>
       <FlatList
         data={data}
         renderItem={renderNote}

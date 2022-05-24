@@ -18,6 +18,7 @@ export function fetchNotes() {
 }
 
 export function createNote(note) {
+  console.log("assssssssssssss")
   return async dispatch => {
     dispatch({type: types.CREATE_NOTE});
     try {

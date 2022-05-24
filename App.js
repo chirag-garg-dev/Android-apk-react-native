@@ -15,6 +15,7 @@ import LoginView from './app/login';
 import SignUp from './app/signup';
 import DesktopScreen from './app/screens/DesktopScreen';
 import UpdateNote from './app/screens/UpdateNote';
+import CreateNote from './app/screens/CreateNote';
 
 const rootReducer = combineReducers({...reducers});
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -45,6 +46,7 @@ const PostStack = () => (
   <Stack.Navigator >
     <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="Update" component={UpdateNote} />
+    <Stack.Screen name="Create" component={CreateNote} />
   </Stack.Navigator>
 );
 

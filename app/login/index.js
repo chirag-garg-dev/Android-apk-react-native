@@ -22,11 +22,6 @@ const LoginView = ({ navigation }) => {
       },[]);
       
   return ( 
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <View style={styles.inputView}>
          <TextInput
@@ -56,8 +51,7 @@ const LoginView = ({ navigation }) => {
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
     </View>
-    </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    
   );
 };
 
