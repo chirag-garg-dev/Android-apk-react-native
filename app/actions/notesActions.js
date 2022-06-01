@@ -18,6 +18,7 @@ export function fetchNotes() {
 }
 
 export function createNote(note) {
+  console.log("assssssssssssss")
   return async dispatch => {
     dispatch({type: types.CREATE_NOTE});
     try {
@@ -65,10 +66,9 @@ export function deleteNote(id) {
 }
 
 export function updateNote(note,id) {
-  console.log("cccccccccccccccccccccccccccccccc",note)
+
   return async dispatch => {
     dispatch({type: types.UPDATE_NOTE});
-  console.log("dddddddddddddddddddddd",note)
     try {
       // let response = await fetch('https://62775f6e08221c96846440a0.mockapi.io/notes/'+id, {
       let response = await fetch('https://rails-api-article.herokuapp.com/notes/'+id,{

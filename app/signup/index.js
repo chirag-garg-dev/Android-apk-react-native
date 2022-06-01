@@ -1,6 +1,6 @@
-import React, { Component,useState } from "react";
+import React, { Component,useState,useEffect } from "react";
 import {useSignup} from "./Hooks";
-
+import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
 import {
   StyleSheet,
   Text,
@@ -10,10 +10,20 @@ import {
 } from "react-native";
 import styles from './style';
 
-function SignUp() {
+function SignUp({ navigation }) {
     const {email, setEmail, setPassword , password, handleSubmitButton } = useSignup();
 
+    const getData = async () => {
+      const save =  await AsyncStorage.getItem("token");
+      console.log(save)
+      save && navigation.navigate('DrawerStack');   
+    } 
+    useEffect(() => {
+      getData()  
+    },[]);
+    
     return (
+    getData(),
       <View style={styles.container}>
         <TextInput
           style={styles.input}
