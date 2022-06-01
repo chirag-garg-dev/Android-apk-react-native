@@ -1,32 +1,68 @@
-export function loginfetch() {
-  return async dispatch => {
-    dispatch({type: types.FETCH_NOTES});
-    try {
-      let response = await fetch('https://62775f6e08221c96846440a0.mockapi.io/notes');
-      // let response = await fetch('http://localhost:3000/notes');
-      if (response.status !== 200) {
-        throw new Error('FETCH_ERROR');
-      }
-      response = await response.json();
-      dispatch({type: types.FETCH_NOTES_SUCCESS, data: response});
-    } catch (error) {
-      dispatch({type: types.FETCH_NOTES_FAILURE, error});
-    }
-  };
-}
+import React, {useState, createRef} from 'react';
+import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
 
-  state = {
-    username: '', password: '', email: '', phone_number: ''
-  }
-  onChangeText = (key, val) => {
-    this.setState({ [key]: val })
-  }
-  signUp = async () => {
-    const { username, password, email, phone_number } = this.state
-    try {
-      // here place your signup logic
-      console.log('user successfully signed up!: ', success)
-    } catch (err) {
-      console.log('error signing up: ', err)
+export const useLogin = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errortext, setErrortext] = useState('');
+ 
+  const savedData = async (token) => {
+    await AsyncStorage.setItem("token",token);
+            console.log("savedData", token);
+  } 
+
+  const getData = async () => {
+    const save =  await AsyncStorage.getItem("token");
+            console.log("getData", save);
+  } 
+
+  const handleSubmitPress = async () => {
+    setErrortext('');
+    if (!email) {
+      alert('Please fill Email');
+      return;
     }
-  }
+    if (!password) {
+      alert('Please fill Password');
+      return;
+    }
+    setLoading(true);
+    let dataToSend = {email: email, password: password};
+    let formBody = [];
+    for (let key in dataToSend) {
+    let encodedKey = encodeURIComponent(key);
+    let encodedValue = encodeURIComponent(dataToSend[key]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+    formBody = formBody.join('&');
+    fetch('https://rails-api-article.herokuapp.com/login', {
+      method: 'POST',
+      body: formBody,
+      headers: {
+        'Content-Type':
+        'application/x-www-form-urlencoded;charset=UTF-8',
+      },
+    })
+    .then((response) => response.json())
+      .then((responseJson) => {
+        setLoading(false);
+        if (!responseJson.token == false) {
+          savedData(responseJson["token"]);
+          getData();
+
+        } else {
+          alert("Please check your email id or password");
+          console.log('Please check your email id or password');
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error(error);
+      });
+  };
+  return {
+    email, setEmail , password , setPassword , handleSubmitPress 
+  }; 
+};

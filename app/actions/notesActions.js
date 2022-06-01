@@ -18,6 +18,7 @@ export function fetchNotes() {
 }
 
 export function createNote(note) {
+  console.log("assssssssssssss")
   return async dispatch => {
     dispatch({type: types.CREATE_NOTE});
     try {
@@ -65,6 +66,7 @@ export function deleteNote(id) {
 }
 
 export function updateNote(note,id) {
+
   return async dispatch => {
     dispatch({type: types.UPDATE_NOTE});
     try {
@@ -75,6 +77,7 @@ export function updateNote(note,id) {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
+
         body: JSON.stringify(note),
       });
       if (response.status !== 200) {
