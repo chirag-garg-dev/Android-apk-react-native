@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import  AsyncStorage  from "@react-native-async-storage/async-storage"; 
+import { useNavigation } from '@react-navigation/native';
 
 export const useSignup = () => {
 
+  const navigation = useNavigation();
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [loading, setLoading] = useState(false);
@@ -20,8 +22,6 @@ export const useSignup = () => {
   } 
 
   const handleSubmitButton = async () => {
-          console.log(email);
-         console.log(password);
     setErrortext('');
     if (!email) {
       alert('Please fill Email');
@@ -58,10 +58,10 @@ export const useSignup = () => {
         
         if (!responseJson == false) {
           savedData(responseJson["token"]);
-          
           getData();
           alert("Registration Successful"); 
           console.log('Registration Successful. Please Login to proceed');
+          navigation.navigate('DrawerStack');
         } else {
           setErrortext(responseJson);
         }

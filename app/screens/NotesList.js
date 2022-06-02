@@ -29,13 +29,16 @@ function NotesList  ({note,  editNote }) {
         <Text style={styles.author}>{note.description}</Text>
         
         {note.avatar && <Image source={{ uri: note.avatar }} style={{ width: 400, height: 400 }} />}
-        <Button title="Delete" onPress={() => {
-                deleteNote(note.id)
-                }} />
+         <View style={styles.buttonContainer}>
          <Button title= "Edit" onPress={() => {
          		editNote(note)
          }}/>
+        <Button title="Delete" color="#841584" onPress={() => {
+                deleteNote(note.id)
+                }} />
       </View>
+      </View>
+
     </View>
 	);
 }; 

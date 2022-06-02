@@ -16,6 +16,7 @@ import SignUp from './app/signup';
 import DesktopScreen from './app/screens/DesktopScreen';
 import UpdateNote from './app/screens/UpdateNote';
 import CreateNote from './app/screens/CreateNote';
+import YoutubeData from './app/screens/Youtube';
 
 const rootReducer = combineReducers({...reducers});
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -36,7 +37,7 @@ const LoginStack = () => (
 const DrawerStack = () => (
   <Drawer.Navigator initialRouteName="Desktop">
     <Drawer.Screen name="Desktop" component={DesktopScreen} />
-    <Drawer.Screen name="Login" component={LoginView} />
+    <Drawer.Screen name="Youtube" component={YoutubeData} />
     <Drawer.Screen name="Signup" component={SignUp} />
     <Drawer.Screen name="Post" component={PostStack} />
   </Drawer.Navigator>
