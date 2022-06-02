@@ -27,6 +27,7 @@ const DesktopScreen = ({ navigation }) => {
       <Video
         source={require('./../../assets/office.mp4')}  
         rate={1.0}
+        repeat
         volume={1.0}
         resizeMode="cover"
         controls={true}  

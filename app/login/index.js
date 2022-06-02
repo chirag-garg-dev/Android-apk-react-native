@@ -11,16 +11,7 @@ import { useLogin } from './Hooks';
 const LoginView = ({ navigation }) => {
 
   const {  setEmail , setPassword , handleSubmitPress } = useLogin();
-
-  const getData = async () => {
-    const save =  await AsyncStorage.getItem("token");
-      console.log(save)
-      save && navigation.navigate('DrawerStack');   
-    } 
-      useEffect(() => {
-        getData()  
-      },[]);
-      
+  
   return ( 
     <View style={styles.container}>
       <View style={styles.inputView}>
