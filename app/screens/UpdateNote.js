@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect } from 'react';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+// import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import * as notesActions from '../actions/notesActions';
 import {ScrollView,View,Text,TextInput,Button,Image,

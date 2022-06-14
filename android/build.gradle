@@ -10,7 +10,7 @@ buildscript {
         targetSdkVersion = 31
 
         if (System.properties['os.arch'] == "aarch64") {
-            // For M1 Users we need to use the NDK 24 which added support for aarch64
+          // For M1 Users we need to use the NDK 24 which added support for aarch64
             ndkVersion = "24.0.8215888"
         } else if (Os.isFamily(Os.FAMILY_WINDOWS)) {
             // For Android Users, we need to use NDK 23, otherwise the build will
@@ -51,6 +51,12 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
+        jcenter() {
+            content {
+                includeModule("com.yqritc", "android-scalablevideoview")
+            }
+        }
+
         google()
         maven { url 'https://www.jitpack.io' }
     }

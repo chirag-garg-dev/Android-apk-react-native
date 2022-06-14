@@ -11,19 +11,9 @@ import {
 import styles from './style';
 
 function SignUp({ navigation }) {
-    const {email, setEmail, setPassword , password, handleSubmitButton } = useSignup();
+  const {email, setEmail, setPassword , password, handleSubmitButton } = useSignup();
 
-    const getData = async () => {
-      const save =  await AsyncStorage.getItem("token");
-      console.log(save)
-      save && navigation.navigate('DrawerStack');   
-    } 
-    useEffect(() => {
-      getData()  
-    },[]);
-    
-    return (
-    getData(),
+    return (   
       <View style={styles.container}>
         <TextInput
           style={styles.input}
@@ -49,5 +39,4 @@ function SignUp({ navigation }) {
     )
   }
 
- 
 export default SignUp;

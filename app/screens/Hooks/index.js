@@ -12,14 +12,13 @@ export const postData = () => {
 
   const myState =useSelector((state)=>state)
 
-  const [isNew, setIsNew] = useState(false);
   const [location, setLocation] = useState('');
   const [loading, setLoading] = useState(true);
   const [note, setNote] = useState('');
  
 
   return {
-    isNew, setIsNew  , loading , setLoading, note, setNote, myState
+     loading , setLoading, note, setNote, myState
   };
 };
 

@@ -64,6 +64,11 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         padding: 20,
     },
+    buttonContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    },
 });
 
 export default  styles;

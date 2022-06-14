@@ -19,9 +19,9 @@ import {postData} from './Hooks';
 
 export default function  Home({ navigation }) {
   
-  const {myState, isNew, setIsNew  , loading , setLoading, note, setNote} = postData();
+  const {myState, loading , setLoading, note, setNote} = postData();
   const {data, status} = myState.notes;
-    
+
   if (status === 'failure') {
     return <Text>{'Error'}</Text>;
   } else if (status == 'loading') {

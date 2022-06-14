@@ -4,7 +4,7 @@ import {Image, Pressable, StyleSheet, Button, View, Text, ImageBackground } from
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
@@ -16,13 +16,14 @@ import SignUp from './app/signup';
 import DesktopScreen from './app/screens/DesktopScreen';
 import UpdateNote from './app/screens/UpdateNote';
 import CreateNote from './app/screens/CreateNote';
+import YoutubeData from './app/screens/Youtube';
+import Chat from './app/screens/Chat';
 
 const rootReducer = combineReducers({...reducers});
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-
 const Stack = createNativeStackNavigator();
-// const BottomTab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 const LoginStack = () => (
@@ -33,13 +34,28 @@ const LoginStack = () => (
   </Stack.Navigator>
 );
 
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
 const DrawerStack = () => (
   <Drawer.Navigator initialRouteName="Desktop">
     <Drawer.Screen name="Desktop" component={DesktopScreen} />
-    <Drawer.Screen name="Login" component={LoginView} />
+    <Drawer.Screen name="Youtube" component={YoutubeData} />
     <Drawer.Screen name="Signup" component={SignUp} />
     <Drawer.Screen name="Post" component={PostStack} />
+    <Drawer.Screen name="Chats" component={TabStack} />
   </Drawer.Navigator>
+);
+
+const TabStack = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="messanger" component={Chat} options={{ tabBarBadge: 3 }} />
+    <Tab.Screen name="Settings" component={SettingsScreen} />
+  </Tab.Navigator>
 );
 
 const PostStack = () => (
@@ -49,7 +65,6 @@ const PostStack = () => (
     <Stack.Screen name="Create" component={CreateNote} />
   </Stack.Navigator>
 );
-
 
 // Manifest of possible screens
 const RootNavigator = () => (
@@ -62,7 +77,6 @@ const RootNavigator = () => (
   </NavigationContainer>
 );
 
-
 function App() {
   return (
     <Provider store={store}>
@@ -72,8 +86,22 @@ function App() {
 } 
 export default App;
 
+ 
+// import * as React from 'react';
+// import {Image, Pressable, StyleSheet, Button, View, Text, ImageBackground } from 'react-native';
+// import Count from './app/programs/Count';
+// function App() {
+//   return (
+//     <Count />
+//   );
+// } 
+// export default App;
 
 
+
+
+
+ 
 
 
 // import React from 'react';
