@@ -1,18 +1,17 @@
-import React, {useState, createRef, useEffect} from 'react';
+import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, 
   Alert, Image, Platform, TouchableWithoutFeedback, 
   TouchableOpacity, Button, Keyboard  } from 'react-native';
-import LoginPart from './Hooks';
 import styles from './style';
-import { useLogin } from './Hooks';
 
-// export function LoginView() {
-const LoginView = ({ navigation }) => {
+const Hello = () => {
 
-  const {  setEmail , setPassword , handleSubmitPress } = useLogin();
-  
+	const handleSubmitPress =() => {
+		
+	}
+
   return ( 
-    <View style={styles.container}>
+    <View>
       <View style={styles.inputView}>
          <TextInput
           style={styles.TextInput}
@@ -40,9 +39,12 @@ const LoginView = ({ navigation }) => {
         onPress={handleSubmitPress}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
+    
     </View>
     
   );
 };
 
-export default LoginView;
+export default Hello;
+
+

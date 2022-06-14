@@ -9,16 +9,19 @@ export const useSignup = () => {
   const [password, setPassword] = useState(" ");
   const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
- 
-
-  const savedData = async (token) => {
-    await AsyncStorage.setItem("token",token);
-      console.log("savedData", token);
-  } 
 
   const getData = async () => {
     const save =  await AsyncStorage.getItem("token");
-      console.log("getData", save);
+    save && navigation.navigate('DrawerStack');   
+  } 
+  
+  useEffect(() => {
+    getData()  
+  },[]);
+    
+  const savedData = async (token) => {
+    await AsyncStorage.setItem("token",token);
+      console.log("savedData", token);
   } 
 
   const handleSubmitButton = async () => {

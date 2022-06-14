@@ -98,10 +98,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center"
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  },
   backgroundVideo: {
       width:400,
       height:400,

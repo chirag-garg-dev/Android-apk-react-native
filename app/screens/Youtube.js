@@ -2,10 +2,17 @@ import React, {useState, useCallback} from 'react';
 import {Button, View, Alert} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
+export const Youtube = () => {
+  return (
+    <View>
+      <Test>Chirag</Test> 
+    </View>
+  )
+}
+
 const YoutubeData = () => {
 
   const [playing, setPlaying] = useState(false);
-
   const togglePlaying = () => {
     setPlaying((prev) => !prev);
   }

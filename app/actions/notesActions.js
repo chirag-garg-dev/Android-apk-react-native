@@ -6,6 +6,7 @@ export function fetchNotes() {
     try {
       // let response = await fetch('https://62775f6e08221c96846440a0.mockapi.io/notes');
       let response = await fetch('https://rails-api-article.herokuapp.com/notes');
+      // let response = await fetch('https://my-project-dfde5-default-rtdb.firebaseio.com/notes.json');
       if (response.status !== 200) {
         throw new Error('FETCH_ERROR');
       }
@@ -18,11 +19,12 @@ export function fetchNotes() {
 }
 
 export function createNote(note) {
-  console.log("assssssssssssss")
   return async dispatch => {
     dispatch({type: types.CREATE_NOTE});
     try {
       let response = await fetch('https://rails-api-article.herokuapp.com/notes', {
+      // let response = await fetch('https://my-project-dfde5-default-rtdb.firebaseio.com/notes.json', {
+
       // let response = await fetch('http://localhost:3000/notes', {
         method: 'POST',
         headers: {
@@ -90,3 +92,4 @@ export function updateNote(note,id) {
     }
   };
 }
+  

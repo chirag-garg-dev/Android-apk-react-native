@@ -3,27 +3,27 @@ import {Button, ActivityIndicator, Text, View,
   Image, ImageBackground,StatusBar, StyleSheet, Alert, Modal, Pressable} from 'react-native';
 
 const WelcomeScreen = ({ navigation }) => {
-   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 	
   return (
     <View style={styles.container}>
-   <StatusBar
-        animated={true}
-        backgroundColor="red" />
+    <StatusBar
+      animated={true}
+      backgroundColor="red" />
    	 
     	<ImageBackground source={require('./../../Image/welcome.jpeg')} 
     	resizeMode="cover" style={styles.image}>
       
-      <Text style={styles.text}>Inside</Text>
-      <Button title="Login"
-          onPress={() => navigation.navigate('Login')}
+        <Text style={styles.text}>Inside</Text>
+        <Button title="Login"
+            onPress={() => navigation.navigate('Login')}
         />
         <Button title="Signup"
-        onPress={() => navigation.navigate('Signup')} />
+                onPress={() => navigation.navigate('Signup')} />
 
     	</ImageBackground>
       
-       <Modal
+      <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -113,46 +113,4 @@ const styles = StyleSheet.create({
   }
 });
 
-
 export default WelcomeScreen;
-
-
-
- 
-
-
-
-
-
-
-//  
-
-// import React, { useState } from "react";
-// import { View, Switch, StyleSheet } from "react-native";
-
-// const App = () => {
-//   const [isEnabled, setIsEnabled] = useState(false);
-//   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-//   return (
-//     <View style={styles.container}>
-//       <Switch
-//         trackColor={{ false: "#767577", true: "#81b0ff" }}
-//         thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-//         ios_backgroundColor="#3e3e3e"
-//         onValueChange={toggleSwitch}
-//         value={isEnabled}
-//       />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center"
-//   }
-// });
-
-// export default App;
